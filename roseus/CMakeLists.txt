@@ -61,11 +61,13 @@ include_directories(/usr/include /usr/X11R6/include ${euslisp_INCLUDE_DIRS} ${ca
 add_library(roseus roseus.cpp)
 add_library(eustf eustf.cpp)
 add_library(roseus_c_util roseus_c_util.c)
+add_library(sample sample.cpp)
 target_link_libraries(roseus ${rospack_LIBRARIES} ${roscpp_LIBRARIES})
 target_link_libraries(eustf  ${roscpp_LIBRARIES} ${tf_LIBRARIES} ${tf2_ros_LIBRARIES})
 set_target_properties(roseus PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/euslisp)
 set_target_properties(eustf PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/euslisp)
 set_target_properties(roseus_c_util PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/euslisp)
+set_target_properties(sample PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/euslisp)
 
 # compile flags
 add_definitions(-O2 -Wno-write-strings -Wno-comment)
@@ -90,6 +92,7 @@ target_link_libraries(roseus ${Boost_LIBRARIES})
 set_target_properties(roseus PROPERTIES PREFIX "" SUFFIX ".so")
 set_target_properties(eustf PROPERTIES PREFIX "" SUFFIX ".so")
 set_target_properties(roseus_c_util PROPERTIES PREFIX "" SUFFIX ".so")
+set_target_properties(sample PROPERTIES PREFIX "" SUFFIX ".so")
 
 add_service_files(
   FILES AddTwoInts.srv StringString.srv
